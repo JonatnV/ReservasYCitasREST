@@ -1,0 +1,31 @@
+name: Delivery
+on:
+  push:
+    branches: ['main']
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargando el proyecto
+        uses: actions/checkout@v4
+      - name: Instalando Java
+        uses: actions/setup-java@4
+        with:
+            distribution: 'temurin'
+            java-version: '21'
+      - name: Configurando Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Compilando el proyecto build project
+        run: ./gradlew build
+      - name: Conseguir la version
+        run: |
+          version=$(grep -oP "version\s*=\s*'\K[^']+" build.gradle)
+          echo 'Version: $version'
+      - name: Build Docker image
+        run: docker build -t citasyreservas:$version .
+      - name: Logearse en Docker
+        run: docker login -u ${{ secrets.USER }} -p ${{ secrets.DOCKERHUB }}
+      - name: Taggear y pusher la version
+        run: |
+          docker tag citasyreservas:$version ${{ secrets.USER }}/citasyreservas:$version
+          docker push ${{ secrets.USER }}/citasyreservas:$version
