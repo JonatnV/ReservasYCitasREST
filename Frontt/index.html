@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Citas</h1>
+        
+        <section id="work-hours">
+            <h2>Configurar Franja de Trabajo</h2>
+            <form id="work-hours-form">
+                <label for="start-time">Hora de Inicio:</label>
+                <input type="time" id="start-time" name="start-time" required>
+                
+                <label for="end-time">Hora de Fin:</label>
+                <input type="time" id="end-time" name="end-time" required>
+                
+                <button type="submit">Guardar</button>
+            </form>
+        </section>
+
+        <section id="check-availability">
+            <h2>Consulta de Disponibilidad</h2>
+            <form id="availability-form">
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date" required>
+                
+                <label for="time">Hora:</label>
+                <input type="time" id="time" name="time" required>
+                
+                <button type="submit">Consultar</button>
+            </form>
+            <div id="availability-results"></div>
+        </section>
+
+        <section id="book-appointment">
+            <h2>Reserva de Cita</h2>
+            <form id="booking-form">
+                <label for="service">Servicio:</label>
+                <input type="text" id="service" name="service" required>
+                
+                <label for="stylist">Estilista:</label>
+                <input type="text" id="stylist" name="stylist" required>
+                
+                <label for="booking-date">Fecha:</label>
+                <input type="date" id="booking-date" name="booking-date" required>
+                
+                <label for="booking-time">Hora:</label>
+                <input type="time" id="booking-time" name="booking-time" required>
+                
+                <button type="submit">Reservar</button>
+            </form>
+        </section>
+
+        <section id="cancel-appointment">
+            <h2>Cancelación de Cita</h2>
+            <form id="cancel-form">
+                <label for="cancel-id">ID de la Cita:</label>
+                <input type="text" id="cancel-id" name="cancel-id" required>
+                
+                <button type="submit">Cancelar</button>
+            </form>
+        </section>
+
+        <section id="reschedule-appointment">
+            <h2>Reprogramación de Cita</h2>
+            <form id="reschedule-form">
+                <label for="reschedule-id">ID de la Cita:</label>
+                <input type="text" id="reschedule-id" name="reschedule-id" required>
+                
+                <label for="new-date">Nueva Fecha:</label>
+                <input type="date" id="new-date" name="new-date" required>
+                
+                <label for="new-time">Nueva Hora:</label>
+                <input type="time" id="new-time" name="new-time" required>
+                
+                <button type="submit">Reprogramar</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
